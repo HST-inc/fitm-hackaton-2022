@@ -11,6 +11,7 @@ fastapi = "^0.88.0"
 uvicorn = "^0.20.0"
 psycopg2-binary = "^2.9.5"
 databases = {extras = ["postgres"], version = "^0.6.2"}
+asyncpg = "^0.27.0"
 
 
 [build-system]
