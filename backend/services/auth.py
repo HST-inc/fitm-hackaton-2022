@@ -5,13 +5,14 @@ from backend.models.authmodel import AuthModel
 from backend.models.usermodel import UserModel
 from sqlalchemy.orm import Session
 from db_user import *
+from backend.db.base import engine
 
 security = HTTPBearer()
 auth_handler = Auth()
 
 
 def signup(user_details: AuthModel):
-    sess = Session()
+    sess = Session(bind=engine)
     if get_user_by_login(sess, user_details.username) is not None:
         return 'Account already exists'
     try:
