@@ -55,36 +55,3 @@ def log_out(token: str):
     if user is None:
         raise HTTPException(status_code=404, detail='User not found')
     user.key.delete(token)
-
-
-def getdoctor(id: int):
-    sess = Session(bind=engine)
-    patient = get_user(sess, id)
-    sess.commit()
-    if patient is None or patient.doctor < 0:
-        raise HTTPException(status_code=404, detail='User not found')
-    return patient.doctor
-
-
-def getpatients(id: int):
-    sess = Session(bind=engine)
-    users = get_users(sess)
-    sess.commit()
-    res = []
-    for user in users:
-        if user.doctor == id:
-            res.append(user)
-    return res
-
-
-def getpatientsshort(id: int):
-    sess = Session(bind=engine)
-    users = get_users(sess)
-    sess.commit()
-    res = []
-    for user in users:
-        if user.doctor == id:
-            res.append(
-                {"name": user.name, "secondName": user.secondName, "patronymic": user.patronymic, "sex": user.sex,
-                 "birthday": user.birthday})
-    return res

@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from packages.models.signindto import SignInDto
 from packages.models.signupdto import SignUpDto
-from packages.services.auth import signin, signup, log_out, getpatients, getdoctor, getpatientsshort
+from packages.services.auth import signin, signup, log_out
 
 router = APIRouter()
 
@@ -29,18 +29,3 @@ async def logout(token: str):
 @router.get("/api/v1/refresh_token")
 async def refresh_token(token: str):
     return sign_in_by_token(token)
-
-
-@router.get("/api/v1/get_patients/")
-async def get_patients(id: int):
-    return getpatients(id)
-
-
-@router.get("/api/v1/get_patients_short/")
-async def get_patients_short(id: int):
-    return getpatientsshort(id)
-
-
-@router.get("/api/v1/get_patients/")
-async def get_doctor(id: int):
-    return getdoctor(id)
