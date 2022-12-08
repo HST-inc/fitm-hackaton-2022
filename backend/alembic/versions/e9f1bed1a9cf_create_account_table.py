@@ -44,12 +44,7 @@ class User:
 def upgrade() -> None:
     op.create_table(
         "users",
-        sa.Column("id", sa.Integer, autoincrement=True, unique=True, primary_key=True),
-        sa.Column("first_name", sa.String, primary_key=True),
-        sa.Column("second_name", sa.String, primary_key=True),
-        sa.Column("age", sa.Integer),
-        sa.Column("created_time", sa.DateTime, default=datetime.datetime.utcnow),
-        sa.Column("hashed_password", sa.String, unique=True, primary_key=True),
+        sa.Column("user", User, unique=True, primary_key=True)
     )
 
 
