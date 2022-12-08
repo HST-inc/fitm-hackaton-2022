@@ -1,16 +1,17 @@
 from .base import database, metadata
 import sqlalchemy as sa
 import datetime
+import pydantic
 
 
-class Sex:
+class Sex(pydantic.BaseModel):
     val: str
 
     def __str__(self):
         return 'fe' if not self.val else '' + 'male'
 
 
-class Passport:
+class Passport(pydantic.BaseModel):
     series: str
     number: str
 
@@ -18,7 +19,7 @@ class Passport:
         return "{self.aeries} {self.number}"
 
 
-class User:
+class User(pydantic.BaseModel):
     login: str
     password: str
     name: str
@@ -41,11 +42,3 @@ class User:
                "{self.phone} " \
                "{self.snils} " \
                "{self.passport}"
-
-
-users_table = sa.Table(
-    "users",
-    metadata,
-    sa.Column("id", sa.Integer, autoincrement=True, unique=True, primary_key=True),
-    sa.Column("user", sa.String, unique=True, primary_key=True)
-)
