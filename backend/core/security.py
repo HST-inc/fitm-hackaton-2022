@@ -12,8 +12,8 @@ class Auth():
     def encode_password(self, password):
         return self.hasher.hash(password)
 
-    def verify_password(self, hashed_password, encoded_password):
-        return self.hasher.verify(hashed_password, encoded_password)
+    def verify_password(self, password, hashed_password):
+        return self.hasher.verify(password, hashed_password)
 
     def encode_token(self, username):
         payload = {
