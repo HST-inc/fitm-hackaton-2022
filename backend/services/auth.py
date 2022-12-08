@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException, Security
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from backend.core.security import Auth
-from backend.models.auth import AuthModel
-from backend.models.user import User
+from backend.models.authmodel import AuthModel
+from backend.models.usermodel import UserModel
 
 security = HTTPBearer()
 auth_handler = Auth()

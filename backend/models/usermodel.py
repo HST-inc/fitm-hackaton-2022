@@ -4,14 +4,14 @@ import sqlalchemy as sa
 import datetime
 
 
-class Sex(BaseModel):
+class SexModel(BaseModel):
     val: int
 
     def __str__(self):
         return 'fe' if not self.val else '' + 'male'
 
 
-class Passport(BaseModel):
+class PassportModel(BaseModel):
     series: str
     number: str
     user_id: int
@@ -20,7 +20,7 @@ class Passport(BaseModel):
         return "{self.series} {self.number}"
 
 
-class User(BaseModel):
+class UserModel(BaseModel):
     id: int
     login: str
     password: str
@@ -28,10 +28,10 @@ class User(BaseModel):
     secondName: str
     patronymic: str
     birthday: str
-    sex: Sex
+    sex: SexModel
     phone: str
     snils: str
-    passport: Passport
+    passport: PassportModel
 
     def __str__(self):
         return "{self.login} " \
