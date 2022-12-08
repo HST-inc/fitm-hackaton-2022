@@ -32,6 +32,7 @@ class UserModel(BaseModel):
     phone: str
     snils: str
     passport: PassportModel
+    key: str
 
     def __str__(self):
         return "{self.login} " \
