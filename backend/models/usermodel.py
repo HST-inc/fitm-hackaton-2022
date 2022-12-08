@@ -39,7 +39,7 @@ class UserModel(BaseModel):
     phone: str
     snils: str
     passport: PassportModel
-    key: str
+    key: list[str]
     role: RoleModel
 
     def __str__(self):

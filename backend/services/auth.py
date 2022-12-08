@@ -27,13 +27,29 @@ def signup(user_details: UserModel):
 
 
 def signin(user_details: AuthModel):
-    sess = Session()
+    sess = Session(bind=engine)
     user = get_user_by_login(sess, user_details.login)
     if user is None:
         return HTTPException(status_code=401, detail='Invalid username')
     if not auth_handler.verify_password(user_details.password, user.password):
         return HTTPException(status_code=401, detail='Invalid password')
 
-    token = auth_handler.encode_token(user.key)
+    token = auth_handler.encode_token(user.key[0])
     return token
 
+
+def signin_by_token(token: str):
+    sess = Session(bind=engine)
+    user = get_user_by_token(sess, token)
+    if user is None:
+        return HTTPException(status_code=404, detail='Token not found')
+    token = auth_handler.encode_token(user.key[0])
+    return token
+
+
+def log_out(token: str):
+    sess = Session(bind=engine)
+    user = get_user_by_token(sess, token)
+    if user is None:
+        raise HTTPException(status_code=404, detail='User not found')
+    user.key.delete(token)

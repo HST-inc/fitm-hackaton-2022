@@ -16,6 +16,10 @@ def get_users(db: Session, skip: int = 0, limit: int = 100) -> list[UserModel]:
     return db.query(UserModel).offset(skip).limit(limit).all()
 
 
+def get_user_by_token(db: Session, token: str):
+    return db.query(UserModel).filter(token in UserModel.token).first()
+
+
 def put_user(db: Session, user: UserModel) -> str:
     db.add(user)
     db.commit()
