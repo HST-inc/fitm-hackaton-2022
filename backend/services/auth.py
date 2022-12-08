@@ -11,13 +11,13 @@ security = HTTPBearer()
 auth_handler = Auth()
 
 
-def signup(user_details: AuthModel):
+def signup(user_details: UserModel):
     sess = Session(bind=engine)
-    if get_user_by_login(sess, user_details.username) is not None:
+    if get_user_by_login(sess, user_details.login) is not None:
         return 'Account already exists'
     try:
         hashed_password = auth_handler.encode_password(user_details.password)
-        user = UserModel(login=user_details.username, password=hashed_password)
+        user = UserModel(login=user_details.login, password=hashed_password)
         res = put_user(sess, user)
         sess.commit()
         return res  # Обсудить возвращение токенов с Колей
@@ -28,7 +28,7 @@ def signup(user_details: AuthModel):
 
 def signin(user_details: AuthModel):
     sess = Session()
-    user = get_user_by_login(sess, user_details.username)
+    user = get_user_by_login(sess, user_details.login)
     if user is None:
         return HTTPException(status_code=401, detail='Invalid username')
     if not auth_handler.verify_password(user_details.password, user.password):

@@ -5,7 +5,7 @@ from passlib.context import CryptContext
 from datetime import datetime, timedelta
 
 
-class Auth():
+class Auth:
     hasher = CryptContext(schemes=['bcrypt'])
     secret = os.getenv("APP_SECRET_STRING")
 
@@ -31,7 +31,7 @@ class Auth():
     def decode_token(self, token):
         try:
             payload = jwt.decode(token, self.secret, algorithms=['HS256'])
-            if (payload['scope'] == 'access_token'):
+            if payload['scope'] == 'access_token':
                 return payload['sub']
             raise HTTPException(
                 status_code=401, detail='Scope for the token is invalid')
