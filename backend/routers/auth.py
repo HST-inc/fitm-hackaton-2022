@@ -13,6 +13,11 @@ async def sign_up():
     return [{"username": "Rick"}, {"username": "Morty"}]
 
 
-@router.get("/api/v1/auth/")
-async def auth():
+@router.get("/api/v1/logout/")
+async def logout():
     return [{"username": "Rick"}, {"username": "Morty"}]
+
+
+@router.get("/api/v1/refresh_token")
+async def refresh_token():
+    return
