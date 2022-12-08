@@ -1,10 +1,12 @@
 from fastapi import APIRouter
+from .models.usermodel import UserModel
+from .models.authmodel import AuthModel
 
 router = APIRouter()
 
 
-@router.get("/api/v1/sign_in/")
-async def sign_in():
+@router.get("/api/v1/sign_in/{login}")
+async def sign_in(login: str):
     return [{"username": "Rick"}, {"username": "Morty"}]
 
 

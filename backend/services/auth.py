@@ -34,12 +34,6 @@ def signin(user_details: AuthModel):
     if not auth_handler.verify_password(user_details.password, user.password):
         return HTTPException(status_code=401, detail='Invalid password')
 
-    access_token = auth_handler.encode_token(user.key)
-    refresh_token = auth_handler.encode_refresh_token(user.key)
-    return {'access_token': access_token, 'refresh_token': refresh_token}
+    token = auth_handler.encode_token(user.key)
+    return token
 
-
-def refresh_token(credentials: HTTPAuthorizationCredentials = Security(security)):
-    refresh_token = credentials.credentials
-    new_token = auth_handler.refresh_token(refresh_token)
-    return {'access_token': new_token}  # Обсудить возвращение токенов с Колей
