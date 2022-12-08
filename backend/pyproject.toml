@@ -13,6 +13,7 @@ psycopg2-binary = "^2.9.5"
 databases = {extras = ["postgres"], version = "^0.6.2"}
 asyncpg = "^0.27.0"
 alembic = "^1.8.1"
+pydantic = "^1.10.2"
 
 
 [build-system]

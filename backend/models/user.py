@@ -1,17 +1,17 @@
+from pydantic import BaseModel
 from .base import database, metadata
 import sqlalchemy as sa
 import datetime
-import pydantic
 
 
-class Sex(pydantic.BaseModel):
+class Sex(BaseModel):
     val: str
 
     def __str__(self):
         return 'fe' if not self.val else '' + 'male'
 
 
-class Passport(pydantic.BaseModel):
+class Passport(BaseModel):
     series: str
     number: str
 
@@ -19,7 +19,7 @@ class Passport(pydantic.BaseModel):
         return "{self.aeries} {self.number}"
 
 
-class User(pydantic.BaseModel):
+class User(BaseModel):
     login: str
     password: str
     name: str
