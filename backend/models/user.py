@@ -20,6 +20,7 @@ class Passport(BaseModel):
 
 
 class User(BaseModel):
+    id: int
     login: str
     password: str
     name: str
