@@ -5,7 +5,7 @@ import datetime
 
 
 class Sex(BaseModel):
-    val: str
+    val: int
 
     def __str__(self):
         return 'fe' if not self.val else '' + 'male'
@@ -16,7 +16,7 @@ class Passport(BaseModel):
     number: str
 
     def __str__(self):
-        return "{self.aeries} {self.number}"
+        return "{self.series} {self.number}"
 
 
 class User(BaseModel):
