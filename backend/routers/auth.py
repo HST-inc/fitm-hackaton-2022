@@ -1,8 +1,6 @@
 from fastapi import APIRouter
-from .models.usermodel import UserModel
-from .models.authmodel import AuthModel
-from .models.authmodel import SignInDto
-from .models.authmodel import SignUpDto
+from .models.signindto import SignInDto
+from .models.signupdto import SignUpDto
 from .services.auth import signin, signup, log_out, getpatients, getdoctor, getpatientsshort
 
 router = APIRouter()

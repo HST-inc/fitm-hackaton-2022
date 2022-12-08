@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from .models import SexModel, PassportModel, RoleModel
 
 
-class SignUpModel(BaseModel):
+class SignUpDto(BaseModel):
     id: int
     login: str
     password: str
