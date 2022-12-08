@@ -1,5 +1,5 @@
-from backend.models.usermodel import UserModel
-from backend.core.security import Auth
+from ..models.usermodel import UserModel
+from ..core.security import Auth
 from sqlalchemy.orm import Session
 from starlette import schemas
 
