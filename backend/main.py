@@ -16,8 +16,3 @@ async def startup():
 async def shutdown():
     await database.disconnect()
 
-
-@app.get("/users/{login}")
-async def get(login: str):
-    query = "SELECT * FROM `users` WHERE `login` = {}".format(login)
-    return database.fetch_all(query=query)
