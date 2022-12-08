@@ -1,11 +1,11 @@
 from fastapi import FastAPI, HTTPException, Security
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from ..core.security import Auth
-from ..models.authmodel import AuthModel
-from ..models.usermodel import UserModel
+from .core.security import Auth
+from .models.authmodel import AuthModel
+from .models.usermodel import UserModel
 from sqlalchemy.orm import Session
 from db_user import *
-from ..db.base import engine
+from .db.base import engine
 
 security = HTTPBearer()
 auth_handler = Auth()

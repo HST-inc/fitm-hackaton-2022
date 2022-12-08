@@ -1,5 +1,5 @@
-from ..models.usermodel import UserModel
-from ..core.security import Auth
+from .models.usermodel import UserModel
+from .core.security import Auth
 from sqlalchemy.orm import Session
 from starlette import schemas
 
@@ -19,4 +19,4 @@ def get_users(db: Session, skip: int = 0, limit: int = 100) -> list[UserModel]:
 def put_user(db: Session, user: UserModel) -> str:
     db.add(user)
     db.commit()
-    return db.query(UserModel).filter(UserModel.id == user.id).first().key
+    return db.query(UserModel).filter(UserModel.id == user.id)[0].key
