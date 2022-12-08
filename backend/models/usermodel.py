@@ -20,6 +20,13 @@ class PassportModel(BaseModel):
         return "{self.series} {self.number}"
 
 
+class Role(BaseModel):
+    rolename: str
+
+    def __str__(self):
+        return self.rolename
+
+
 class UserModel(BaseModel):
     id: int
     login: str
@@ -33,6 +40,7 @@ class UserModel(BaseModel):
     snils: str
     passport: PassportModel
     key: str
+    role: Role
 
     def __str__(self):
         return "{self.login} " \
@@ -44,4 +52,5 @@ class UserModel(BaseModel):
                "{self.sex} " \
                "{self.phone} " \
                "{self.snils} " \
-               "{self.passport}"
+               "{self.passport} " \
+               "{self.role}"
