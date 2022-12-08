@@ -1,6 +1,6 @@
 version: '3'
-  
-  
+
+
 services:
   nginx:
     image: nginx:1.23.2-alpine
@@ -43,7 +43,7 @@ services:
     env_file:
       - .env
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -51,7 +51,7 @@ services:
     image: adminer:4.8.1-standalone
     restart: always
     ports:
-      - 8080:8080
+      - "8000:8080"
 
 volumes:
   pgdata:
