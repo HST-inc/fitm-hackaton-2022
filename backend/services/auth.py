@@ -29,11 +29,11 @@ def signup(user_details: UserModel):
 def signin(user_details: AuthModel):
     sess = Session(bind=engine)
     user = get_user_by_login(sess, user_details.login)
+    sess.commit()
     if user is None:
         return HTTPException(status_code=401, detail='Invalid username')
     if not auth_handler.verify_password(user_details.password, user.password):
         return HTTPException(status_code=401, detail='Invalid password')
-
     token = auth_handler.encode_token(user.key[0])
     return token
 
@@ -41,6 +41,7 @@ def signin(user_details: AuthModel):
 def signin_by_token(token: str):
     sess = Session(bind=engine)
     user = get_user_by_token(sess, token)
+    sess.commit()
     if user is None:
         return HTTPException(status_code=404, detail='Token not found')
     token = auth_handler.encode_token(user.key[0])
@@ -50,6 +51,40 @@ def signin_by_token(token: str):
 def log_out(token: str):
     sess = Session(bind=engine)
     user = get_user_by_token(sess, token)
+    sess.commit()
     if user is None:
         raise HTTPException(status_code=404, detail='User not found')
     user.key.delete(token)
+
+
+def getdoctor(id: int):
+    sess = Session(bind=engine)
+    patient = get_user(sess, id)
+    sess.commit()
+    if patient is None or patient.doctor < 0:
+        raise HTTPException(status_code=404, detail='User not found')
+    return patient.doctor
+
+
+def getpatients(id: int):
+    sess = Session(bind=engine)
+    users = get_users(sess)
+    sess.commit()
+    res = []
+    for user in users:
+        if user.doctor == id:
+            res.append(user)
+    return res
+
+
+def getpatientsshort(id: int):
+    sess = Session(bind=engine)
+    users = get_users(sess)
+    sess.commit()
+    res = []
+    for user in users:
+        if user.doctor == id:
+            res.append(
+                {"name": user.name, "secondName": user.secondName, "patronymic": user.patronymic, "sex": user.sex,
+                 "birthday": user.birthday})
+    return res

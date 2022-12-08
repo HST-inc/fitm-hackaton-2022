@@ -24,3 +24,4 @@ def put_user(db: Session, user: UserModel) -> str:
     db.add(user)
     db.commit()
     return db.query(UserModel).filter(UserModel.id == user.id)[0].key
+

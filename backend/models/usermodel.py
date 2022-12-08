@@ -40,7 +40,8 @@ class UserModel(BaseModel):
     snils: str
     passport: PassportModel
     key: list[str]
-    role: RoleModel
+    role: str
+    doctor: int
 
     def __str__(self):
         return "{self.login} " \
