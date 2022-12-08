@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from .base import database, metadata
+from backend.db.base import database, metadata
 import sqlalchemy as sa
 import datetime
 

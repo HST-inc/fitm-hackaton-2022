@@ -1,16 +1,15 @@
 from fastapi import FastAPI, HTTPException, Security
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from core.security import Auth
+from backend.core.security import Auth
 from user_model import AuthModel
-from models.user import User
-
+from backend.models.user import User
 
 security = HTTPBearer()
 auth_handler = Auth()
 
 
 def signup(user_details: AuthModel):
-    if users.get(user_details.username) != None:
+    if users.get(user_details.username) is not None:
         return 'Account already exists'
     try:
         hashed_password = auth_handler.encode_password(user_details.password)
@@ -23,9 +22,9 @@ def signup(user_details: AuthModel):
 
 def login(user_details: AuthModel):
     user = users.get(user_details.username)
-    if (user is None):
+    if user is None:
         return HTTPException(status_code=401, detail='Invalid username')
-    if (not auth_handler.verify_password(user_details.password, user['password'])):
+    if not auth_handler.verify_password(user_details.password, user['password']):
         return HTTPException(status_code=401, detail='Invalid password')
 
     access_token = auth_handler.encode_token(user['key'])
