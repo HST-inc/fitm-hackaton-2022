@@ -14,6 +14,7 @@ class Sex(BaseModel):
 class Passport(BaseModel):
     series: str
     number: str
+    user_id: int
 
     def __str__(self):
         return "{self.series} {self.number}"
