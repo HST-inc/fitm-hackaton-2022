@@ -46,5 +46,6 @@ class User:
 users_table = sa.Table(
     "users",
     metadata,
+    sa.Column("id", sa.Integer, autoincrement=True, unique=True, primary_key=True),
     sa.Column("user", sa.String, unique=True, primary_key=True)
 )
