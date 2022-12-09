@@ -4,7 +4,7 @@ from packages.core.security import Auth
 from packages.models.authmodel import AuthModel
 from packages.models.usermodel import UserModel
 from sqlalchemy.orm import Session
-from packages.services.db_user import get_users
+from packages.services.db_user import get_users, get_user
 from packages.db.base import engine
 
 
@@ -25,6 +25,7 @@ def getpatients(id: int):
     for user in users:
         if user.doctor == id:
             res.append(user)
+            break
     return res
 
 
@@ -38,4 +39,5 @@ def getpatientsshort(id: int):
             res.append(
                 {"name": user.name, "secondName": user.secondName, "patronymic": user.patronymic, "sex": user.sex,
                  "birthday": user.birthday})
+            break
     return res
