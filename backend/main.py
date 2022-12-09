@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
-from pydantic import BaseModel
-from db.base import database
+from packages.db.base import database
+from packages.routers import auth
 
 app = FastAPI()
+app.include_router(auth.router)
 
 
 @app.on_event("startup")
