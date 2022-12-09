@@ -1,6 +1,4 @@
 from fastapi import APIRouter
-from packages.models.signindto import SignInDto
-from packages.models.signupdto import SignUpDto
 from packages.services.user import getpatients, getdoctor, getpatientsshort
 
 router = APIRouter()
