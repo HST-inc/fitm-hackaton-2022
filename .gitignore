@@ -1053,3 +1053,6 @@ Sessionx.vim
 tags
 # Persistent undo
 [._]*.un~
+analytics/LabTestResults_4_2021.csv
+analytics/tests.txt
+analytics/data.csv
