@@ -7,15 +7,15 @@ router = APIRouter()
 
 
 @router.get("/api/v1/user/get_patients/")
-async def get_patients(id: int):
+async def get_users_by_doctor_id(id: int):
     return getpatients(id)
 
 
 @router.get("/api/v1/user/get_patients/short")
-async def get_patients_short(id: int):
+async def get_users_by_doctor_id_short(id: int):
     return getpatientsshort(id)
 
 
-@router.get("/api/v1/user/get_patients/") # Исправить роут #delete
-async def get_doctor(id: int): # Ненативные названия полей #delete
+@router.get("/api/v1/user/get_patients/doctor/")
+async def get_doctor_id(id: int):
     return getdoctor(id)
