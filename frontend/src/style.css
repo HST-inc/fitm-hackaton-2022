@@ -1,81 +1,62 @@
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-.card {
-  padding: 2em;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0;
+    --smed-base-01: #141414;
+    --smed-base-02: #474747;
+    --smed-base-03: grey;
+    --smed-base-04: #a8a8a8;
+    --smed-base-05: #ccc;
+    --smed-base-06: #e0e0e0;
+    --smed-base-07: #ebebeb;
+    --smed-base-08: #f6f6f6;
+    --smed-base-09: #fff;
+    --smed-primary: #00b2ac;
+    --smed-primary-hover: #009d97;
+    --smed-primary-active: #008783;
+    --smed-primary-text: var(--smed-base-09);
+    --smed-secondary: #e30611;
+    --smed-secondary-hover: #c8050f;
+    --smed-secondary-active: #ad050d;
+    --smed-secondary-text: var(--smed-base-09);
+    --smed-warning: #f5c721;
+    --smed-warning-hover: #d5ad1d;
+    --smed-warning-active: #b59318;
+    --smed-info: #0097fd;
+    --smed-info-hover: #0082da;
+    --smed-info-active: #0070bb;
+    --smed-success: #56d96b;
+    --smed-success-hover: #47b258;
+    --smed-success-active: #3c984b;
+    --smed-error: #f95721;
+    --smed-error-hover: #de4d1d;
+    --smed-error-active: #bd4219;
+    --smed-support-primary-01: #38c3be;
+    --smed-support-primary-02: #80d8d6;
+    --smed-support-primary-03: #baeae9;
+    --smed-support-secondary-01: #e93d45;
+    --smed-support-secondary-02: #ef747a;
+    --smed-support-secondary-03: #f6afb3;
+    --smed-support-warning-01: #f8da6c;
+    --smed-support-warning-02: #fae494;
+    --smed-support-warning-03: #fbebb1;
+    --smed-support-info-01: #4cb6fe;
+    --smed-support-info-02: #8fd1fe;
+    --smed-support-info-03: #bae3fe;
+    --smed-support-green-01: #7fe28f;
+    --smed-support-green-02: #a7ebb2;
+    --smed-support-green-03: #c9f3d0;
+    --smed-support-error-01: #fb8d68;
+    --smed-support-error-02: #fcb39b;
+    --smed-support-error-03: #fdd0c1;
+    min-height: 100%;
+    font-family: MTSSans, BlinkMacSystemFont, Roboto, Segoe UI, Helvetica Neue, Arial, sans-serif;
+    color: var(--smed-base-01);
 }

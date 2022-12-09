@@ -12,7 +12,7 @@ async def sign_in(signin_dto: SignInDto):
 
 
 @router.get("/api/v1/auth/signin/token/")
-async def sign_in_by_token(token: str):
+async def sign_in_by_token(token: str): # Токены должны получаться через header #delete
     return sign_in_by_token(token)
 
 
