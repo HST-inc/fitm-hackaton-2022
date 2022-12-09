@@ -4,7 +4,7 @@ from packages.core.security import Auth
 from packages.models.authmodel import AuthModel
 from packages.models.usermodel import UserModel
 from sqlalchemy.orm import Session
-from packages.services.db_user import *
+from packages.services.db_user import get_users
 from packages.db.base import engine
 
 
