@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from packages.models.signindto import SignInDto
 from packages.models.signupdto import SignUpDto
 from packages.services.auth import signin, signup, log_out
+from fastapi import Header
 
 router = APIRouter()
 
